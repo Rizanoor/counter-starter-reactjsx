@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Container from './components/Container';
 import SearchInput from './components/SearchInput';
+import Info from './components/Info';
 
 // import shoppingIcon from './assets/shopping-icon.svg';
 import plusicon from './assets/plus-icon.svg';
@@ -81,19 +82,11 @@ function App() {
         value={value}
        />
 
-      <div className='info'>
-        <div className='info-total'>
-          <p>{`Total List: ${todos.length}`}</p>
-        </div>
-        
-        <div className='info-total'>
-          <p>{`Total Counts: ${getTotalCounts()}`}</p>
-        </div>
-
-        <button onClick={() => setTodos([])} className='delete-all-button'>
-          Delete All List
-        </button>
-      </div>
+      <Info 
+        todosLength={todos.length}
+        totalCounts={getTotalCounts()}
+        onDelete={() => setTodos([])}
+      />
 
 
         {todos.length > 0 ? (
