@@ -41,7 +41,15 @@ function App() {
   const handleSubstractionCount = (index) => { 
     const newTodos = [...todos]
 
-    newTodos[index].count = newTodos[index].count - 1
+    if (newTodos[index].count > 0) {
+      // selama jumalah count masih di atas 0
+      // bisa lakuin pengurangan
+      newTodos[index].count = newTodos[index].count - 1
+    } else {
+      // kalo udah 0 dan masih dikurangin juga
+      // hapus array value dengan index yang sesuai
+      newTodos.splice(index, 1)
+    }
     
     setTodos(newTodos)
   }
@@ -69,6 +77,21 @@ function App() {
             add
           </button>
         </form>
+
+      <div className='info'>
+        <div className='info-total'>
+          <p>Total List</p>
+        </div>
+        
+        <div className='info-total'>
+          <p>Total Counts</p>
+        </div>
+
+        <button className='delete-all-button'>
+          Delete All List
+        </button>
+      </div>
+
 
         {todos.length > 0 ? (
             <div className='todos'>
