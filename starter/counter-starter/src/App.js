@@ -3,6 +3,7 @@ import './App.css';
 
 import Navbar from './components/Navbar';
 import Container from './components/Container';
+import SearchInput from './components/SearchInput';
 
 // import shoppingIcon from './assets/shopping-icon.svg';
 import plusicon from './assets/plus-icon.svg';
@@ -74,18 +75,11 @@ function App() {
       <Navbar />
 
       <Container>
-      
-        <form className='form' onSubmit={handleSubmit}>
-          <input 
-            onChange={(e) => {setValue(e.target.value)}}
-            value={value}
-            className='input'
-            type='text'
-            placeholder='List Shopping' />
-          <button className='add-button' type='submit'>
-            add
-          </button>
-        </form>
+       <SearchInput 
+        onSubmit={handleSubmit}
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+       />
 
       <div className='info'>
         <div className='info-total'>
