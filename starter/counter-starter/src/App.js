@@ -13,6 +13,23 @@ function App() {
     {title: 'Golda Coffee', count: 1},
   ]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (!value) {
+      alert('No blank list')
+      return
+    }
+
+    const addedTodos = [...todos, {
+      title: value,
+      count: 1
+    }]
+
+    setTodos(addedTodos)
+    setValue('')
+  }
+
   const handleAdditionCount = (index) => { 
     const newTodos = [...todos]
 
@@ -20,6 +37,18 @@ function App() {
     
     setTodos(newTodos)
   }
+
+  const handleSubstractionCount = (index) => { 
+    const newTodos = [...todos]
+
+    newTodos[index].count = newTodos[index].count - 1
+    
+    setTodos(newTodos)
+  }
+
+
+
+
 
   return (
     <>
@@ -29,7 +58,7 @@ function App() {
       </nav>
 
       <section className='container' >
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
           <input 
             onChange={(e) => {setValue(e.target.value)}}
             value={value}
@@ -55,7 +84,7 @@ function App() {
                           {todo.count}
                         </div>
 
-                        <button className='todo-action-button'>
+                        <button onClick={() => handleSubstractionCount(index)} className='todo-action-button'>
                           <img src={minusicon} alt='minus icon'></img>
                         </button>
 
