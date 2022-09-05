@@ -56,3 +56,11 @@
   background-color: var(--main-background-color);
   box-shadow: var(--main-box-shadow);
 }
+
+.todos {
+  box-shadow: var(--main-box-shadow);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 8px;
+  max-height: 680px;
+}

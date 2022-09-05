@@ -5,7 +5,11 @@ import shoppingIcon from './assets/shopping-icon.svg';
 function App() {
 
   const [value, setValue] = useState('');
-  console.log(value);
+  const [todos, setTodos] = useState([
+    {title: 'Susu Ultra', count: 1},
+    {title: 'Susu Kambing', count: 1},
+    {title: 'Susu Sapi', count: 1},
+  ]);
 
   return (
     <>
@@ -26,6 +30,24 @@ function App() {
             add
           </button>
         </form>
+
+        {todos.length > 0 ? (
+            <div className='todos'>
+              {todos.map((todo) =>{
+                return(
+                  <div>
+                    {todo.title}
+                    {todo.count}
+                  </div>
+                )
+              } )}
+            </div>
+          ) : (
+            <div>
+              Kosong
+            </div>
+          )
+        }
       </section>
     </>
   );
