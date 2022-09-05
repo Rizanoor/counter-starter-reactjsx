@@ -1,14 +1,10 @@
 import {useState} from 'react';
-import './App.css';  
 
 import Navbar from './components/Navbar';
 import Container from './components/Container';
 import SearchInput from './components/SearchInput';
 import Info from './components/Info';
-
-// import shoppingIcon from './assets/shopping-icon.svg';
-import plusicon from './assets/plus-icon.svg';
-import minusicon from './assets/minus-icon.svg';
+import Todos from './components/Todos';
 
 
 function App() {
@@ -90,31 +86,12 @@ function App() {
 
 
         {todos.length > 0 ? (
-            <div className='todos'>
-              {todos.map((todo, index, arr) =>{
+            <Todos 
+              todos={todos}
+              onSubstraction={(index) => handleAdditionCount(index)}
+              onAddition={(index) => handleAdditionCount(index)}
+            />
 
-                return(
-                  <div key={index} className={`todo ${!(arr.length === index + 1) && 'todo-divider'}`}>
-
-                    {todo.title}
-
-                    <div className='todo-icon-wrapper'>
-                        <div className='todo-count'>
-                          {todo.count}
-                        </div>
-
-                        <button onClick={() => handleSubstractionCount(index)} className='todo-action-button'>
-                          <img src={minusicon} alt='minus icon'></img>
-                        </button>
-
-                        <button onClick={() => handleAdditionCount(index)} className='todo-action-button'>
-                          <img src={plusicon} alt='plus icon'></img>
-                        </button>
-                    </div>
-                  </div>
-                )
-              } )}
-            </div>
           ) : (
             <div>
               Kosong
