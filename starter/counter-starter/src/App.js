@@ -1,16 +1,33 @@
 import {useState} from 'react';
 import './App.css';  
+import shoppingIcon from './assets/shopping-icon.svg';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [value, setValue] = useState('');
+  console.log(value);
 
   return (
-    <div>
-      <h1>{count}</h1>
+    <>
+      <nav className='nav'>
+        <img className='nav-icon' src={shoppingIcon} alt='shopping icon'/>
+        <h1 className='nav-title'>Shopping List</h1>
+      </nav>
 
-      <button onClick={() => {setCount(count + 1)}}>Plus</button>
-      <button onClick={() => {setCount(count - 1)}}>Minus</button>
-    </div>
+      <section className='container' >
+        <form className='form'>
+          <input 
+            onChange={(e) => {setValue(e.target.value)}}
+            value={value}
+            className='input'
+            type='text'
+            placeholder='List Shopping' />
+          <button className='add-button' type='submit'>
+            add
+          </button>
+        </form>
+      </section>
+    </>
   );
 }
 
